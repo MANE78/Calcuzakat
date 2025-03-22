@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcuzakat - حاسبة الزكاة وحاسبة السعرات وحاسبة القروض مجانًا</title>
+    <meta name="description" content="استخدم حاسبة الزكاة، حاسبة السعرات الحرارية، وحاسبة القروض مجانًا مع Calcuzakat. احسب زكاتك، سعراتك اليومية، أو أقساط القروض بدقة وسهولة.">
+    <meta name="keywords" content="حاسبة الزكاة, حاسبة السعرات الحرارية, حاسبة القروض, حاسبات متخصصة, حساب الزكاة, السعرات اليومية, أقساط القروض">
+    <meta name="robots" content="index, follow">
+    <!-- رمز التحقق من Google Search Console -->
+    <meta name="google-site-verification" content="gqPupWIdRH56GA5qCOF7-dM2LLUNPT-t5wOuYkY0IbI" />
+    <!-- معرف AdSense -->
+    <meta name="google-adsense-account" content="ca-pub-9822291009441043">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4A6FDE;
+            --secondary-color: #F5F7FA;
+            --accent-color: #28C76F;
+            --alert-color: #EA5455;
+            --text-color: #333;
+            --light-text: #666;
+            --border-color: #ddd;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            border-radius: 0 0 10px 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .ad-container {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .ad-container.horizontal {
+            height: 90px;
+        }
+        
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .tab-button {
+            flex: 1;
+            padding: 15px;
+            background-color: white;
+            border: none;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--light-text);
+            transition: all 0.3s ease;
+        }
+        
+        .tab-button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .tab-button.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .calculator-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .calculator-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            text-align: center;
+        }
+        
+        .calculator-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            max-width: 500px;
+        }
+        
+        .input-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .input-row label {
+            flex: 1;
+            font-weight: 600;
+        }
+        
+        .input-row input[type="number"],
+        .input-row select {
+            flex: 2;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+        }
+        
+        .calculate-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        
+        .calculate-button:hover {
+            background-color: #3858C8;
+        }
+        
+        .result-container {
+            background-color: var(--secondary-color);
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+        }
+        
+        .result-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .result-details {
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+        
+        .info-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .info-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .info-section p {
+            margin-bottom: 15px;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            border-radius: 10px 10px 0 0;
+            margin-top: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .tab-button {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+            
+            .calculator-container, .info-section {
+                padding: 20px;
+            }
+            
+            .input-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .input-row label {
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9822291009441043" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Calcuzakat - حاسبات متخصصة</h1>
+            <p>احسب الزكاة، السعرات الحرارية، أو أقساط القروض بدقة وسهولة مع حاسبات مجانية</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <!-- AdSense - أعلى الصفحة -->
+        <div class="ad-container horizontal">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-9822291009441043"
+                 data-ad-slot="1234567890"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <!-- تبويبات الحاسبات -->
+        <div class="tabs">
+            <button class="tab-button active" data-tab="zakat">حاسبة الزكاة</button>
+            <button class="tab-button" data-tab="calories">حاسبة السعرات الحرارية</button>
+            <button class="tab-button" data-tab="loan">حاسبة القروض</button>
+        </div>
+        
+        <!-- حاسبة -->
+        <div class="calculator-container">
+            <h2 class="calculator-title">حاسبة الزكاة</h2>
+            
+            <div class="calculator-form">
+                <div class="input-group" id="zakatForm">
+                    <div class="input-row">
+                        <label>المبلغ النقدي (ريال):</label>
+                        <input type="number" id="cashAmount" min="0" step="0.01" placeholder="أدخل المبلغ النقدي">
+                    </div>
+                    <div class="input-row">
+                        <label>وزن الذهب (جرام):</label>
+                        <input type="number" id="goldWeight" min="0" step="0.01" placeholder="أدخل وزن الذهب">
+                    </div>
+                    <div class="input-row">
+                        <label>سعر الجرام (ريال):</label>
+                        <input type="number" id="goldPrice" min="0" step="0.01" value="200" placeholder="أدخل سعر الذهب">
+                    </div>
+                </div>
+                <div class="input-group" id="caloriesForm" style="display: none;">
+                    <div class="input-row">
+                        <label>العمر (سنة):</label>
+                        <input type="number" id="age" min="1" placeholder="أدخل عمرك">
+                    </div>
+                    <div class="input-row">
+                        <label>الوزن (كجم):</label>
+                        <input type="number" id="weight" min="1" step="0.1" placeholder="أدخل وزنك">
+                    </div>
+                    <div class="input-row">
+                        <label>الطول (سم):</label>
+                        <input type="number" id="height" min="1" placeholder="أدخل طولك">
+                    </div>
+                    <div class="input-row">
+                        <label>الجنس:</label>
+                        <select id="gender">
+                            <option value="male">ذكر</option>
+                            <option value="female">أنثى</option>
+                        </select>
+                    </div>
+                    <div class="input-row">
+                        <label>مستوى النشاط:</label>
+                        <select id="activityLevel">
+                            <option value="1.2">قليل (بدون رياضة)</option>
+                            <option value="1.375">خفيف (1-3 أيام أسبوعيًا)</option>
+                            <option value="1.55">متوسط (3-5 أيام أسبوعيًا)</option>
+                            <option value="1.725">عالي (6-7 أيام أسبوعيًا)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input-group" id="loanForm" style="display: none;">
+                    <div class="input-row">
+                        <label>مبلغ القرض (ريال):</label>
+                        <input type="number" id="loanAmount" min="1" step="0.01" placeholder="أدخل مبلغ القرض">
+                    </div>
+                    <div class="input-row">
+                        <label>الفائدة السنوية (%):</label>
+                        <input type="number" id="interestRate" min="0" step="0.01" placeholder="أدخل نسبة الفائدة">
+                    </div>
+                    <div class="input-row">
+                        <label>مدة القرض (سنوات):</label>
+                        <input type="number" id="loanTerm" min="1" placeholder="أدخل عدد السنوات">
+                    </div>
+                </div>
+                <button class="calculate-button" id="calculateButton">احسب الآن</button>
+                
+                <div class="result-container">
+                    <div class="result-value" id="resultText">أدخل البيانات لحساب الزكاة أو السعرات أو القروض</div>
+                    <div class="result-details" id="resultDetails"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- AdSense - بين المحتوى -->
+        <div class="ad-container">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-9822291009441043"
+                 data-ad-slot="1234567891"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <!-- قسم المعلومات -->
+        <div class="info-section">
+            <h2>معلومات عن حاسبة الزكاة</h2>
+            <p>استخدم حاسبة الزكاة لحساب مقدار الزكاة المستحقة بدقة على المال النقدي والذهب. النصاب للذهب 85 جرامًا، ونسبة الزكاة 2.5%. أدخل سعر الذهب يدويًا للحصول على نتائج دقيقة.</p>
+        </div>
+        
+        <!-- AdSense - أسفل الصفحة -->
+        <div class="ad-container horizontal">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-9822291009441043"
+                 data-ad-slot="1234567892"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>© 2025 Calcuzakat - حاسبات متخصصة مجانية لحساب الزكاة، السعرات، والقروض</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cashAmount = document.getElementById('cashAmount');
+            const goldWeight = document.getElementById('goldWeight');
+            const goldPrice = document.getElementById('goldPrice');
+            const age = document.getElementById('age');
+            const weight = document.getElementById('weight');
+            const height = document.getElementById('height');
+            const gender = document.getElementById('gender');
+            const activityLevel = document.getElementById('activityLevel');
+            const loanAmount = document.getElementById('loanAmount');
+            const interestRate = document.getElementById('interestRate');
+            const loanTerm = document.getElementById('loanTerm');
+            const calculateButton = document.getElementById('calculateButton');
+            const resultText = document.getElementById('resultText');
+            const resultDetails = document.getElementById('resultDetails');
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const calculatorTitle = document.querySelector('.calculator-title');
+            const zakatForm = document.getElementById('zakatForm');
+            const caloriesForm = document.getElementById('caloriesForm');
+            const loanForm = document.getElementById('loanForm');
+            const infoSection = document.querySelector('.info-section');
+            
+            let currentCalculator = 'zakat';
+            
+            // معلومات الحاسبات مع تحسين الكلمات المفتاحية
+            const calculatorInfo = {
+                'zakat': {
+                    title: 'حاسبة الزكاة الدقيقة',
+                    description: 'احسب الزكاة المستحقة على المال والذهب بسهولة مع حاسبة الزكاة من Calcuzakat. النصاب للذهب 85 جرامًا، ونسبة الزكاة 2.5%. أدخل سعر الذهب يدويًا لنتائج دقيقة.'
+                },
+                'calories': {
+                    title: 'حاسبة السعرات الحرارية اليومية',
+                    description: 'اكتشف احتياجاتك من السعرات الحرارية اليومية مع حاسبة السعرات من Calcuzakat بناءً على العمر، الوزن، الطول، الجنس، ومستوى النشاط باستخدام معادلة ميفلين-سانت جيور.'
+                },
+                'loan': {
+                    title: 'حاسبة القروض الشهرية',
+                    description: 'احسب أقساط القروض الشهرية بدقة مع حاسبة القروض من Calcuzakat بناءً على مبلغ القرض، الفائدة السنوية، ومدة القرض باستخدام مع #include <stdio.h>ادلة القسط الثابت.'
+                }
+            };
+            
+            // تحديث واجهة المستخدم
+            function updateUI(calculatorType) {
+                currentCalculator = calculatorType;
+                calculatorTitle.textContent = calculatorInfo[calculatorType].title;
+                infoSection.querySelector('h2').textContent = calculatorInfo[calculatorType].title;
+                infoSection.querySelector('p').textContent = calculatorInfo[calculatorType].description;
+                
+                zakatForm.style.display = calculatorType === 'zakat' ? 'block' : 'none';
+                caloriesForm.style.display = calculatorType === 'calories' ? 'block' : 'none';
+                loanForm.style.display = calculatorType === 'loan' ? 'block' : 'none';
+                
+                // إعادة تعيين الحقول
+                cashAmount.value = ''; goldWeight.value = ''; goldPrice.value = '200';
+                age.value = ''; weight.value = ''; height.value = ''; gender.value = 'male'; activityLevel.value = '1.2';
+                loanAmount.value = ''; interestRate.value = ''; loanTerm.value = '';
+                resultText.textContent = 'أدخل البيانات لحساب الزكاة أو السعرات أو القروض';
+                resultDetails.textContent = '';
+            }
+            
+            // حساب الزكاة
+            function calculateZakat() {
+                const cash = parseFloat(cashAmount.value) || 0;
+                const gold = parseFloat(goldWeight.value) || 0;
+                const price = parseFloat(goldPrice.value) || 0;
+                const goldNisab = 85; // نصاب الذهب بالجرام
+                const zakatRate = 0.025; // 2.5%
+                
+                const goldValue = gold * price;
+                const totalWealth = cash + goldValue;
+                const nisabValue = goldNisab * price;
+                
+                if (totalWealth >= nisabValue) {
+                    const zakat = totalWealth * zakatRate;
+                    resultText.textContent = `مقدار الزكاة: ${zakat.toFixed(2)} ريال`;
+                    resultDetails.textContent = `الخطوات: المال النقدي (${cash}) + قيمة الذهب (${gold} × ${price} = ${goldValue}) = ${totalWealth}. الزكاة = ${totalWealth} × 2.5% = ${zakat.toFixed(2)}.`;
+                } else {
+                    resultText.textContent = 'المبلغ أقل من النصاب، لا زكاة مستحقة';
+                    resultDetails.textContent = `النصاب = ${goldNisab} × ${price} = ${nisabValue} ريال. إجمالي ثروتك (${totalWealth}) أقل من النصاب.`;
+                }
+            }
+            
+            // حساب السعرات الحرارية (معادلة ميفلين-سانت جيور)
+            function calculateCalories() {
+                const ageVal = parseFloat(age.value);
+                const weightVal = parseFloat(weight.value);
+                const heightVal = parseFloat(height.value);
+                const activityVal = parseFloat(activityLevel.value);
+                
+                if (!ageVal || !weightVal || !heightVal) {
+                    resultText.textContent = 'يرجى إدخال جميع البيانات لحساب السعرات!';
+                    resultDetails.textContent = '';
+                    return;
+                }
+                
+                let bmr;
+                if (gender.value === 'male') {
+                    bmr = 10 * weightVal + 6.25 * heightVal - 5 * ageVal + 5;
+                } else {
+                    bmr = 10 * weightVal + 6.25 * heightVal - 5 * ageVal - 161;
+                }
+                
+                const calories = bmr * activityVal;
+                resultText.textContent = `احتياجاتك اليومية: ${calories.toFixed(0)} سعرة حرارية`;
+                resultDetails.textContent = `الخطوات: معدل الأيض الأساسي (BMR) = ${bmr.toFixed(0)}. السعرات = ${bmr.toFixed(0)} × ${activityVal} = ${calories.toFixed(0)}.`;
+            }
+            
+            // حساب القروض (معادلة القسط الثابت)
+            function calculateLoan() {
+                const amount = parseFloat(loanAmount.value) || 0;
+                const rate = parseFloat(interestRate.value) / 100 / 12; // الفائدة الشهرية
+                const term = parseFloat(loanTerm.value) * 12; // عدد الأشهر
+                
+                if (!amount || !rate || !term) {
+                    resultText.textContent = 'يرجى إدخال جميع البيانات لحساب القروض!';
+                    resultDetails.textContent = '';
+                    return;
+                }
+                
+                const monthlyPayment = (amount * rate * Math.pow(1 + rate, term)) / (Math.pow(1 + rate, term) - 1);
+                const totalPayment = monthlyPayment * term;
+                const totalInterest = totalPayment - amount;
+                
+                resultText.textContent = `القسط الشهري: ${monthlyPayment.toFixed(2)} ريال`;
+                resultDetails.textContent = `الخطوات: القسط = ${amount} × ${rate.toFixed(4)} × (1 + ${rate.toFixed(4)})^${term} / ((1 + ${rate.toFixed(4)})^${term} - 1). إجمالي الدفعات = ${totalPayment.toFixed(2)}، الفائدة الكلية = ${totalInterest.toFixed(2)}.`;
+            }
+            
+            // معالجة الحساب
+            calculateButton.addEventListener('click', () => {
+                if (currentCalculator === 'zakat') {
+                    calculateZakat();
+                } else if (currentCalculator === 'calories') {
+                    calculateCalories();
+                } else {
+                    calculateLoan();
+                }
+            });
+            
+            // تبديل التبويبات
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    updateUI(button.dataset.tab);
+                });
+            });
+            
+            // تهيئة الواجهة
+            updateUI('zakat');
+        });
+    </script>
+</body>
+              </html>
