@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CalcuZakat - حاسبة الزكاة الشرعية الذكية | احسب زكاتك بدقة وسهولة</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="CalcuZakat - حاسبة الزكاة الشرعية الذكية والأكثر دقة. احسب زكاة المال، الذهب، الفضة، الأسهم والعقارات بسهولة. تحديث تلقائي للنصاب وأسعار الذهب والفضة لعام 2025.">
+    <meta name="keywords" content="حاسبة الزكاة, زكاة المال, زكاة الذهب, زكاة الفضة, حساب الزكاة, النصاب, الزكاة الشرعية, CalcuZakat, zakat calculator, حاسبة زكاة, زكاة الأسهم, زكاة العقارات">
+    <meta name="author" content="CalcuZakat">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Arabic">
+    <meta name="revisit-after" content="1 day">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="CalcuZakat - حاسبة الزكاة الشرعية الذكية">
+    <meta property="og:description" content="احسب زكاتك بدقة وسهولة مع CalcuZakat - الحاسبة الشرعية الأكثر تقدماً للزكاة في العالم العربي">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://calcuzakat.com">
+    <meta property="og:locale" content="ar_SA">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CalcuZakat - حاسبة الزكاة الشرعية الذكية">
+    <meta name="twitter:description" content="احسب زكاتك بدقة وسهولة مع CalcuZakat">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "CalcuZakat",
+        "description": "حاسبة الزكاة الشرعية الذكية لحساب زكاة المال والذهب والفضة والأسهم",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "offers": {
+            "@type": "Offer",
+            "price": "0"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "CalcuZakat"
+        }
+    }
+    </script>
+    
+    <!-- CDN Libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-green: #2d7d32;
+            --secondary-green: #4caf50;
+            --accent-gold: #ffd700;
+            --dark-green: #1b5e20;
+            --light-green: #e8f5e8;
+            --islamic-blue: #1e3a8a;
+            --text-dark: #2c3e50;
+            --gradient-islamic: linear-gradient(135deg, #2d7d32 0%, #4caf50 100%);
+        }
+        
+        * {
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        .font-amiri {
+            font-family: 'Amiri', serif;
+        }
+        
+        .bg-gradient-islamic {
+            background: var(--gradient-islamic);
+        }
+        
+        .text-primary-green {
+            color: var(--primary-green);
+        }
+        
+        .text-accent-gold {
+            color: var(--accent-gold);
+        }
+        
+        .bg-primary-green {
+            background-color: var(--primary-green);
+        }
+        
+        .bg-secondary-green {
+            background-color: var(--secondary-green);
+        }
+        
+        .bg-light-green {
+            background-color: var(--light-green);
+        }
+        
+        .border-primary-green {
+            border-color: var(--primary-green);
+        }
+        
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .islamic-pattern {
+            background-image: radial-gradient(circle at 1px 1px, var(--primary-green) 1px, transparent 0);
+            background-size: 20px 20px;
+            opacity: 0.1;
+        }
+        
+        .calculator-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border: 2px solid var(--light-green);
+        }
+        
+        .result-highlight {
+            background: linear-gradient(45deg, var(--accent-gold), #ffeb3b);
+            color: var(--dark-green);
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 20px 0;
+        }
+        
+        .info-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px 0;
+            border-right: 4px solid var(--primary-green);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .nisab-display {
+            background: linear-gradient(135deg, var(--islamic-blue), #3b82f6);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-islamic);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 auto 15px;
+        }
+        
+        .section-title {
+            color: var(--primary-green);
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent-gold);
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .input-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .input-group input:focus, .input-group select:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(45, 125, 50, 0.1);
+        }
+        
+        .btn-primary {
+            background: var(--gradient-islamic);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(45, 125, 50, 0.3);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: var(--primary-green);
+            border: 2px solid var(--primary-green);
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary-green);
+            color: white;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-top: 4px solid var(--primary-green);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-bottom: 10px;
+        }
+        
+        .tab-button {
+            background: transparent;
+            border: 2px solid var(--primary-green);
+            color: var(--primary-green);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 5px;
+        }
+        
+        .tab-button.active, .tab-button:hover {
+            background: var(--primary-green);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 20px 0;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient-islamic);
+            transition: width 0.3s ease;
+        }
+        
+        .notification {
+            background: var(--light-green);
+            color: var(--dark-green);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-right: 4px solid var(--primary-green);
+        }
+        
+        .floating-action {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: var(--gradient-islamic);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .floating-action:hover {
+            transform: scale(1.1);
+        }
+        
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .floating-action {
+                bottom: 20px;
+                left: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+            color: white;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>');
+            background-size: 50px 50px;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin: 30px 0;
+        }
+        
+        .loading-spinner {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary-green);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .currency-selector {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+        
+        .currency-btn {
+            background: white;
+            border: 2px solid var(--primary-green);
+            color: var(--primary-green);
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .currency-btn.active, .currency-btn:hover {
+            background: var(--primary-green);
+            color: white;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .comparison-table th {
+            background: var(--primary-green);
+            color: white;
+            padding: 15px;
+            font-weight: 600;
+        }
+        
+        .comparison-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .comparison-table tr:hover {
+            background: var(--light-green);
+        }
+        
+        .tips-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .tip-item {
+            display: flex;
+            align-items: flex-start;
+            margin: 15px 0;
+            padding: 15px;
+            background: var(--light-green);
+            border-radius: 8px;
+        }
+        
+        .tip-icon {
+            color: var(--primary-green);
+            margin-left: 15px;
+            font-size: 1.2rem;
+            margin-top: 2px;
+        }
+        
+        .footer {
+            background: var(--dark-green);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-gold);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <div class="text-2xl font-bold text-primary-green">
+                            <i class="fas fa-calculator ml-2"></i>
+                            CalcuZakat
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#home" class="text-gray-700 hover:text-primary-green px-3 py-2 rounded-md text-sm font-medium">الرئيسية</a>
+                        <a href="#calculator" class="text-gray-700 hover:text-primary-green px-3 py-2 rounded-md text-sm font-medium">حاسبة الزكاة</a>
+                        <a href="#about" class="text-gray-700 hover:text-primary-green px-3 py-2 rounded-md text-sm font-medium">عن الزكاة</a>
+                        <a href="#features" class="text-gray-700 hover:text-primary-green px-3 py-2 rounded-md text-sm font-medium">المميزات</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button class="mobile-menu-button text-gray-700 hover:text-primary-green">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-6xl font-bold font-amiri mb-6" data-aos="fade-up">
+                    CalcuZakat
+                </h1>
+                <p class="text-xl md:text-2xl mb-8" data-aos="fade-up" data-aos-delay="200">
+                    حاسبة الزكاة الشرعية الذكية والأكثر دقة
+                </p>
+                <p class="text-lg mb-12 opacity-90" data-aos="fade-up" data-aos-delay="400">
+                    احسب زكاة المال، الذهب، الفضة، الأسهم والعقارات بسهولة ودقة عالية
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="600">
+                    <a href="#calculator" class="btn-primary">
+                        <i class="fas fa-calculator ml-2"></i>
+                        احسب زكاتك الآن
+                    </a>
+                    <a href="#about" class="btn-secondary">
+                        <i class="fas fa-info-circle ml-2"></i>
+                        تعلم عن الزكاة
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Current Nisab Display -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="nisab-display" data-aos="fade-up">
+                <h2 class="text-2xl font-bold mb-4 text-center">
+                    <i class="fas fa-coins ml-2"></i>
+                    قيم النصاب الحالية - 2025
+                </h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-accent-gold mb-2">
+                            <i class="fas fa-gem ml-2"></i>
+                            $8,500
+                        </div>
+                        <p class="text-lg">نصاب الذهب (87.48 جرام)</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-accent-gold mb-2">
+                            <i class="fas fa-circle ml-2"></i>
+                            $650
+                        </div>
+                        <p class="text-lg">نصاب الفضة (612.36 جرام)</p>
+                    </div>
+                </div>
+                <div class="text-center mt-6">
+                    <p class="text-sm opacity-90">
+                        <i class="fas fa-clock ml-1"></i>
+                        آخر تحديث: <span id="last-update">اليوم</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="py-16 bg-light-green">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="stats-grid">
+                <div class="stat-card" data-aos="fade-up">
+                    <div class="stat-number">
+                        <i class="fas fa-users text-primary-green"></i>
+                        <div class="counter" data-target="50000">0</div>
+                    </div>
+                    <p class="text-gray-600">مستخدم نشط</p>
+                </div>
+                <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-number">
+                        <i class="fas fa-calculator text-primary-green"></i>
+                        <div class="counter" data-target="250000">0</div>
+                    </div>
+                    <p class="text-gray-600">عملية حساب</p>
+                </div>
+                <div class="stat-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stat-number">
+                        <i class="fas fa-dollar-sign text-primary-green"></i>
+                        <div class="counter" data-target="100">0</div>
+                        <span class="text-lg">M</span>
+                    </div>
+                    <p class="text-gray-600">إجمالي الزكاة المحسوبة</p>
+                </div>
+                <div class="stat-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="stat-number">
+                        <i class="fas fa-star text-primary-green"></i>
+                        <div class="text-yellow-500">★★★★★</div>
+                    </div>
+                    <p class="text-gray-600">تقييم المستخدمين</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section id="calculator" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title" data-aos="fade-up">
+                <i class="fas fa-calculator ml-2"></i>
+                حاسبة الزكاة الشاملة
+            </h2>
+            
+            <div class="calculator-card max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                <div class="p-8">
+                    <!-- Tab Navigation -->
+                    <div class="text-center mb-8">
+                        <button class="tab-button active" onclick="showTab('money')">
+                            <i class="fas fa-money-bill-wave ml-2"></i>
+                            زكاة المال
+                        </button>
+                        <button class="tab-button" onclick="showTab('gold')">
+                            <i class="fas fa-gem ml-2"></i>
+                            زكاة الذهب
+                        </button>
+                        <button class="tab-button" onclick="showTab('silver')">
+                            <i class="fas fa-circle ml-2"></i>
+                            زكاة الفضة
+                        </button>
+                        <button class="tab-button" onclick="showTab('stocks')">
+                            <i class="fas fa-chart-line ml-2"></i>
+                            زكاة الأسهم
+                        </button>
+                        <button class="tab-button" onclick="showTab('property')">
+                            <i class="fas fa-building ml-2"></i>
+                            زكاة العقارات
+                        </button>
+                    </div>
+
+                    <!-- Currency Selector -->
+                    <div class="currency-selector justify-center">
+                        <button class="currency-btn active" onclick="setCurrency('USD')">دولار أمريكي</button>
+                        <button class="currency-btn" onclick="setCurrency('SAR')">ريال سعودي</button>
+                        <button class="currency-btn" onclick="setCurrency('AED')">درهم إماراتي</button>
+                        <button class="currency-btn" onclick="setCurrency('EGP')">جنيه مصري</button>
+                        <button class="currency-btn" onclick="setCurrency('KWD')">دينار كويتي</button>
+                    </div>
+
+                    <!-- Money Zakat Calculator -->
+                    <div id="money" class="tab-content active">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <div class="input-group">
+                                    <label for="cash">النقد في البنك والمنزل</label>
+                                    <input type="number" id="cash" placeholder="المبلغ" oninput="calculateMoney()">
+                                </div>
+                                <div class="input-group">
+                                    <label for="savings">المدخرات والودائع</label>
+                                    <input type="number" id="savings" placeholder="المبلغ" oninput="calculateMoney()">
+                                </div>
+                                <div class="input-group">
+                                    <label for="receivables">الديون المستحقة لك</label>
+                                    <input type="number" id="receivables" placeholder="المبلغ" oninput="calculateMoney()">
+                                </div>
+                                <div class="input-group">
+                                    <label for="debts">الديون المستحقة عليك</label>
+                                    <input type="number" id="debts" placeholder="المبلغ" oninput="calculateMoney()">
+                                </div>
+                            </div>
+                            <div>
+                                <div class="info-card">
+                                    <h3 class="text-lg font-bold text-primary-green mb-3">
+                                        <i class="fas fa-info-circle ml-2"></i>
+                                        معلومات مهمة
+                                    </h3>
+                                    <ul class="text-sm text-gray-600 space-y-2">
+                                        <li>• معدل الزكاة: 2.5% من إجمالي المال</li>
+                                        <li>• النصاب: قيمة 85 جرام من الذهب</li>
+                                        <li>• يجب أن يحول على المال الحول الهجري</li>
+                                        <li>• تخصم الديون المستحقة عليك</li>
+                                    </ul>
+                                </div>
+                                <div class="result-highlight">
+                                    <div class="text-sm mb-2">إجمالي الزكاة المستحقة</div>
+                                    <div id="money-result">0.00</div>
+                                    <div class="text-sm mt-2">
+                                        <span class="current-currency">USD</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gold Zakat Calculator -->
+                    <div id="gold" class="tab-content">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <div class="input-group">
+                                    <label for="gold-weight">وزن الذهب (بالجرام)</label>
+                                    <input type="number" id="gold-weight" placeholder="الوزن" oninput="calculateGold()">
+                                </div>
+                                <div class="input-group">
+                                    <label for="gold-purity">عيار الذهب</label>
+                                    <select id="gold-purity" onchange="calculateGold()">
+                                        <option value="24">24 عيار (99.9%)</option>
+                                        <option value="22">22 عيار (91.7%)</option>
+                                        <option value="21">21 عيار (87.5%)</option>
+                                        <option value="18">18 عيار (75%)</option>
+                                        <option value="14">14 عيار (58.3%)</option>
+                                    </select>
+                                </div>
+                                <div class="input-group">
+                                    <label for="gold-price">سعر الجرام الحالي</label>
+                                    <input type="number" id="gold-price" value="97.5" placeholder="السعر" oninput="calculateGold()">
+                                </div>
+                            </div>
+                            <div>
+                                <div class="info-card">
+                                    <h3 class="text-lg font-bold text-primary-green mb-3">
+                                        <i class="fas fa-gem ml-2"></i>
+                                        معلومات زكاة الذهب
+                                    </h3>
+                                    <ul class="text-sm text-gray-600 space-y-2">
+                                        <li>• النصاب: 87.48 جرام من الذهب</li>
+                                        <li>• معدل الزكاة: 2.5% من القيمة</li>
+                                        <li>• يحسب العيار في التقدير</li>
+                                        <li>• الذهب المستعمل للزينة معفى</li>
+                                    </ul>
+                                </div>
+                                <div class="result-highlight">
+                                    <div class="text-sm mb-2">زكاة الذهب المستحقة</div>
+                                    <div id="gold-result">0.00</div>
+                                    <div class="text-sm mt-2">
+                                        <span class="current-currency">USD</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Silver Zakat Calculator -->
+                    <div id="silver" class="tab-content">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <div class="input-group">
+                                    <label for="silver-weight">وزن الفضة (بالجرام)</label>
+                                    <input type="number" id="silver-weight" placeholder="الوزن" oninput="calculateSilver()">
+                                </div>
+                                <div class="input-group">
+                                    <label for="silver-purity">نقاء الفضة</label>
+                                    <select id="silver-purity" onchange="calculateSilver()">
+                                        <option value="99.9">99.9% (فضة خالصة)</option>
+                                        <option value="92.5">92.5% (فضة استرليني)</option>
+                                        <option value="90">90% (فضة عادية)</option>
+                                        <option value="80">80% (فضة مخلوطة)</option>
+                                    </select>
+                                </div>
+                                <div class="input-group">
+                                    <label for="silver-price">سعر الجرام الحالي</label>
+                                    <input type="number" id="silver-price" value="1.05" placeholder="السعر" oninput="calculateSilver()">
+                                </div>
+                            </div>
+                            <div>
+                                <div class="info-card">
+                                    <h3 class="text-lg font-bold text-primary-green mb-3">
+                                        <i class="fas fa-circle ml-2"></i>
+                                        معلومات زكاة الفضة
+                                    </h3>
+                                    <ul class="text-sm text-gray-600 space-y-2">
+                                        <li>• النصاب: 612.36 جرام من الفضة</li>
+                                        <li>• معدل الزكاة: 2.5% من القيمة</li>
+                                        <li>• يحسب نقاء الفضة في التقدير</li>
+                                        <li>• الفضة المستعملة للزينة معفاة</li>
+                                    </ul>
+                                </div>
+                                <div class="result-highlight">
+                                    <div class="text-sm mb-2">زكاة الفضة المستحقة</div>
+                                    <div id="silver-result">0.00</div>
+                                    <div class="text-sm mt-2">
+                                        <span class="current-currency">USD</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stocks Zakat Calculator -->
+                    <div id="stocks" class="tab-content">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <div class="input-group">
+                                    <label for="stocks-value">القيمة الحالية للأسهم</label>
+                                    <input type="number" id="stocks-value" placeholder="القيمة" oninput="calculateStocks()">
+                                </div>
+                                <div class="input-group">
+                                    <label for="dividends">الأرباح المحققة</label>
+                                    <input type="number" id="dividends" placeholder="المبلغ" oninput="calculateStocks()">
+                                </div>
+                                <div class="input-group">
+                                    <label for="investment-type">نوع الاستثمار</label>
+                                    <select id="investment-type" onchange="calculateStocks()">
+                                        <option value="trading">تجارة (2.5%)</option>
+                                        <option value="long-term">استثمار طويل الأجل (2.5%)</option>
+                                        <option value="mixed">مختلط (2.5%)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="info-card">
+                                    <h3 class="text-lg font-bold text-primary-green mb-3">
+                                        <i class="fas fa-chart-line ml-2"></i>
+                                        معلومات زكاة الأسهم
+                                    </h3>
+                                    <ul class="text-sm text-gray-600 space-y-2">
+                                        <li>• معدل الزكاة: 2.5% من القيمة</li>
+                                        <li>• تحسب على القيمة السوقية الحالية</li>
+                                        <li>• تشمل الأرباح الموزعة</li>
+                                        <li>• النصاب: نفس نصاب النقد</li>
+                                    </ul>
+                                </div>
+                                <div class="result-highlight">
+                                    <div class="text-sm mb-2">زكاة الأسهم المستحقة</div>
+                                    <div id="stocks-result">0.00</div>
+                                    <div class="text-sm mt-2">
+                                        <span class="current-currency">USD</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property Zakat Calculator -->
+                    <div id="property" class="tab-content">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <div class="input-group">
+                                    <label for="property-value">القيمة الحالية للعقار</label>
+                                    <input type="number" id="property-value" placeholder="القيمة" oninput="calculateProperty()">
+                                </div>
+                                <div class="input-group">
+                                    <label for="rental-income">الدخل الإيجاري السنوي</label>
+                                    <input type="number" id="rental-income" placeholder="المبلغ" oninput="calculateProperty()">
+                                </div>
+                                <div class="input-group">
+                                    <label for="property-type">نوع العقار</label>
+                                    <select id="property-type" onchange="calculateProperty()">
+                                        <option value="investment">استثماري (2.5%)</option>
+                                        <option value="commercial">تجاري (2.5%)</option>
+                                        <option value="residential">سكني للإيجار (2.5%)</option>
+                                        <option value="land">أرض للبيع (2.5%)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="info-card">
+                                    <h3 class="text-lg font-bold text-primary-green mb-3">
+                                        <i class="fas fa-building ml-2"></i>
+                                        معلومات زكاة العقارات
+                                    </h3>
+                                    <ul class="text-sm text-gray-600 space-y-2">
+                                        <li>• معدل الزكاة: 2.5% من القيمة</li>
+                                        <li>• العقار السكني الشخصي معفى</li>
+                                        <li>• تحسب على القيمة السوقية</li>
+                                        <li>• تشمل الدخل الإيجاري</li>
+                                    </ul>
+                                </div>
+                                <div class="result-highlight">
+                                    <div class="text-sm mb-2">زكاة العقارات المستحقة</div>
+                                    <div id="property-result">0.00</div>
+                                    <div class="text-sm mt-2">
+                                        <span class="current-currency">USD</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Total Zakat Summary -->
+                    <div class="mt-8 p-6 bg-gradient-islamic text-white rounded-lg">
+                        <h3 class="text-2xl font-bold text-center mb-4">
+                            <i class="fas fa-calculator ml-2"></i>
+                            إجمالي الزكاة المستحقة
+                        </h3>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold mb-2" id="total-zakat">0.00</div>
+                            <div class="text-lg opacity-90">
+                                <span class="current-currency">USD</span>
+                            </div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <button class="btn-primary bg-white text-primary-green hover:bg-gray-100" onclick="resetCalculator()">
+                                <i class="fas fa-refresh ml-2"></i>
+                                إعادة تعيين
+                            </button>
+                            <button class="btn-secondary border-white text-white hover:bg-white hover:text-primary-green mr-4" onclick="printResult()">
+                                <i class="fas fa-print ml-2"></i>
+                                طباعة النتيجة
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Zakat Section -->
+    <section id="about" class="py-16 bg-light-green">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title" data-aos="fade-up">
+                <i class="fas fa-book-open ml-2"></i>
+                دليل شامل عن الزكاة
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="info-card hover-lift" data-aos="fade-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-star-and-crescent"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary-green mb-3">تعريف الزكاة</h3>
+                    <p class="text-gray-600">الزكاة هي الركن الثالث من أركان الإسلام، وهي حق المال الذي فرضه الله تعالى على عباده المسلمين القادرين.</p>
+                </div>
+                
+                <div class="info-card hover-lift" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary-green mb-3">شروط وجوب الزكاة</h3>
+                    <p class="text-gray-600">الإسلام، العقل، البلوغ، الحرية، ملك النصاب، حولان الحول، وأن يكون المال نامياً أو قابلاً للنماء.</p>
+                </div>
+                
+                <div class="info-card hover-lift" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary-green mb-3">مصارف الزكاة</h3>
+                    <p class="text-gray-600">الفقراء، المساكين، العاملين عليها، المؤلفة قلوبهم، في الرقاب، الغارمين، في سبيل الله، وابن السبيل.</p>
+                </div>
+                
+                <div class="info-card hover-lift" data-aos="fade-up" data-aos-delay="600">
+                    <div class="feature-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary-green mb-3">النصاب والمقدار</h3>
+                    <p class="text-gray-600">النصاب هو الحد الأدنى للمال الذي تجب فيه الزكاة، ومقدارها 2.5% من المال الذي بلغ النصاب وحال عليه الحول.</p>
+                </div>
+                
+                <div class="info-card hover-lift" data-aos="fade-up" data-aos-delay="800">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary-green mb-3">توقيت إخراج الزكاة</h3>
+                    <p class="text-gray-600">تجب الزكاة عند تمام الحول الهجري على المال، ويستحب إخراجها في شهر رمضان المبارك.</p>
+                </div>
+                
+                <div class="info-card hover-lift" data-aos="fade-up" data-aos-delay="1000">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary-green mb-3">حكمة الزكاة</h3>
+                    <p class="text-gray-600">تزكية النفس، تطهير المال، تحقيق التكافل الاجتماعي، وتقليل الفجوة بين طبقات المجتمع.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title" data-aos="fade-up">
+                <i class="fas fa-table ml-2"></i>
+                مقارنة أنواع الزكاة
+            </h2>
+            
+            <div class="overflow-x-auto" data-aos="fade-up" data-aos-delay="200">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>نوع الزكاة</th>
+                            <th>النصاب</th>
+                            <th>المقدار</th>
+                            <th>الحول</th>
+                            <th>ملاحظات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i class="fas fa-money-bill-wave text-primary-green ml-2"></i>النقد</td>
+                            <td>قيمة 85 جرام ذهب</td>
+                            <td>2.5%</td>
+                            <td>سنة هجرية</td>
+                            <td>يشمل جميع الأموال السائلة</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-gem text-primary-green ml-2"></i>الذهب</td>
+                            <td>87.48 جرام</td>
+                            <td>2.5%</td>
+                            <td>سنة هجرية</td>
+                            <td>عدا الحلي المستعمل للزينة</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-circle text-primary-green ml-2"></i>الفضة</td>
+                            <td>612.36 جرام</td>
+                            <td>2.5%</td>
+                            <td>سنة هجرية</td>
+                            <td>عدا الحلي المستعمل للزينة</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-chart-line text-primary-green ml-2"></i>الأسهم</td>
+                            <td>قيمة 85 جرام ذهب</td>
+                            <td>2.5%</td>
+                            <td>سنة هجرية</td>
+                            <td>على القيمة السوقية الحالية</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-building text-primary-green ml-2"></i>العقارات</td>
+                            <td>قيمة 85 جرام ذهب</td>
+                            <td>2.5%</td>
+                            <td>سنة هجرية</td>
+                            <td>العقارات الاستثمارية فقط</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-seedling text-primary-green ml-2"></i>الزروع</td>
+                            <td>300 صاع (612 كغ)</td>
+                            <td>5-10%</td>
+                            <td>عند الحصاد</td>
+                            <td>10% للمطري، 5% للمسقي</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-light-green">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title" data-aos="fade-up">
+                <i class="fas fa-star ml-2"></i>
+                مميزات CalcuZakat
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="info-card hover-lift" data-aos="fade-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary-green mb-3">حسابات دقيقة</h3>
+                    <p class="text-gray-600">حسابات مبنية على الأحكام الشرعية الصحيحة مع تحديث مستمر لقيم النصاب والأسعار.</p>
+                </div>
+                
+                <div class="info-card hover-lift" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary-green mb-3">تصميم متجاوب</h3>
+                    <p class="text-gray-600">يعمل بشكل مثالي على جميع الأجهزة - الكمبيوتر، الجوال، والأجهزة اللوحية.</p>
+                </div>
+                
+                <div class="info-card hover-lift" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary-green mb-3">عملات متعددة</h3>
+                    <p class="text-gray-600">دعم لأكثر من 15 عملة عربية وعالمية مع تحويل تلقائي حسب أسعار الصرف الحالية.</p>
+                </div>
+                
+                <div class="info-card hover-lift" data-aos="fade-up" data-aos-delay="600">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary-green mb-3">أمان وخصوصية</h3>
+                    <p class="text-gray-600">لا نحفظ أي بيانات شخصية أو مالية، جميع الحسابات تتم محلياً على جهازك.</p>
+                </div>
+                
+                <div class="info-card hover-lift" data-aos="fade-up" data-aos-delay="800">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary-green mb-3">تحديث مستمر</h3>
+                    <p class="text-gray-600">تحديث يومي لأسعار الذهب والفضة، وتحديث دوري للأحكام الشرعية الجديدة.</p>
+                </div>
+                
+                <div class="info-card hover-lift" data-aos="fade-up" data-aos-delay="1000">
+                    <div class="feature-icon">
+                        <i class="fas fa-print"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary-green mb-3">طباعة النتائج</h3>
+                    <p class="text-gray-600">إمكانية طباعة تقرير مفصل بحساب الزكاة للاحتفاظ به أو تقديمه للمختصين.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title" data-aos="fade-up">
+                <i class="fas fa-lightbulb ml-2"></i>
+                نصائح مهمة لحساب الزكاة
+            </h2>
+            
+            <div class="tips-section" data-aos="fade-up" data-aos-delay="200">
+                <div class="tip-item">
+                    <div class="tip-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-primary-green mb-2">تحديد تاريخ الحول</h3>
+                        <p class="text-gray-600">احرص على تحديد تاريخ ثابت كل عام لحساب الزكاة، مثل بداية رمضان أو نهاية السنة الهجرية.</p>
+                    </div>
+                </div>
+                
+                <div class="tip-item">
+                    <div class="tip-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-primary-green mb-2">توثيق المعاملات</h3>
+                        <p class="text-gray-600">احتفظ بسجل دقيق لجميع أموالك وممتلكاتك، واستخدم كشوف الحسابات البنكية للمراجعة.</p>
+                    </div>
+                </div>
+                
+                <div class="tip-item">
+                    <div class="tip-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-primary-green mb-2">استشارة المختصين</h3>
+                        <p class="text-gray-600">في الحالات المعقدة، لا تتردد في استشارة علماء الشريعة أو المختصين في الزكاة.</p>
+                    </div>
+                </div>
+                
+                <div class="tip-item">
+                    <div class="tip-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-primary-green mb-2">النية الصالحة</h3>
+                        <p class="text-gray-600">تذكر أن الزكاة عبادة وتطهير للنفس والمال، فأخرجها بنية صالحة وقلب راضي.</p>
+                    </div>
+                </div>
+                
+                <div class="tip-item">
+                    <div class="tip-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-primary-green mb-2">اختيار المستحقين</h3>
+                        <p class="text-gray-600">تأكد من وصول الزكاة للمستحقين الفعليين، وفضل الأقارب والجيران المحتاجين.</p>
+                    </div>
+                </div>
+                
+                <div class="tip-item">
+                    <div class="tip-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-primary-green mb-2">المراجعة الدورية</h3>
+                        <p class="text-gray-600">راجع حساباتك بانتظام وتأكد من دقة المعلومات، وحدث الأسعار والقيم باستمرار.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chart Section -->
+    <section class="py-16 bg-light-green">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title" data-aos="fade-up">
+                <i class="fas fa-chart-bar ml-2"></i>
+                إحصائيات الزكاة
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg" data-aos="fade-up">
+                    <h3 class="text-xl font-bold text-primary-green mb-4 text-center">
+                        توزيع أنواع الزكاة المحسوبة
+                    </h3>
+                    <div class="chart-container">
+                        <canvas id="zakatTypesChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-xl font-bold text-primary-green mb-4 text-center">
+                        تطور قيمة النصاب عبر الأشهر
+                    </h3>
+                    <div class="chart-container">
+                        <canvas id="nisabChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title" data-aos="fade-up">
+                <i class="fas fa-question-circle ml-2"></i>
+                الأسئلة الشائعة
+            </h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="space-y-4">
+                    <div class="info-card hover-lift" data-aos="fade-up">
+                        <div class="faq-item cursor-pointer" onclick="toggleFAQ(this)">
+                            <div class="flex justify-between items-center">
+                                <h3 class="text-lg font-bold text-primary-green">هل يجب إخراج الزكاة على الذهب المستعمل للزينة؟</h3>
+                                <i class="fas fa-chevron-down transition-transform"></i>
+                            </div>
+                            <div class="faq-answer hidden mt-3 text-gray-600">
+                                <p>الذهب والفضة المستعملان للزينة المعتادة للنساء لا تجب فيهما الزكاة حسب رأي جمهور العلماء، أما إذا كانت الكمية مفرطة أو للاستثمار فتجب الزكاة.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card hover-lift" data-aos="fade-up" data-aos-delay="200">
+                        <div class="faq-item cursor-pointer" onclick="toggleFAQ(this)">
+                            <div class="flex justify-between items-center">
+                                <h3 class="text-lg font-bold text-primary-green">كيف أحسب زكاة الأسهم والاستثمارات؟</h3>
+                                <i class="fas fa-chevron-down transition-transform"></i>
+                            </div>
+                            <div class="faq-answer hidden mt-3 text-gray-600">
+                                <p>تحسب الزكاة على القيمة السوقية الحالية للأسهم، بمعدل 2.5% إذا بلغت النصاب وحال عليها الحول. تشمل أيضاً الأرباح الموزعة والمحققة.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card hover-lift" data-aos="fade-up" data-aos-delay="400">
+                        <div class="faq-item cursor-pointer" onclick="toggleFAQ(this)">
+                            <div class="flex justify-between items-center">
+                                <h3 class="text-lg font-bold text-primary-green">هل تجب الزكاة على العقار السكني الشخصي؟</h3>
+                                <i class="fas fa-chevron-down transition-transform"></i>
+                            </div>
+                            <div class="faq-answer hidden mt-3 text-gray-600">
+                                <p>لا تجب الزكاة على العقار السكني الشخصي الذي تسكن فيه، ولكن تجب على العقارات الاستثمارية والتجارية والمخصصة للإيجار.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card hover-lift" data-aos="fade-up" data-aos-delay="600">
+                        <div class="faq-item cursor-pointer" onclick="toggleFAQ(this)">
+                            <div class="flex justify-between items-center">
+                                <h3 class="text-lg font-bold text-primary-green">كيف أتعامل مع الديون في حساب الزكاة؟</h3>
+                                <i class="fas fa-chevron-down transition-transform"></i>
+                            </div>
+                            <div class="faq-answer hidden mt-3 text-gray-600">
+                                <p>تخصم الديون المستحقة عليك من إجمالي أموالك قبل حساب الزكاة، أما الديون المستحقة لك فتحسب ضمن أموالك إذا كنت تتوقع تحصيلها.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card hover-lift" data-aos="fade-up" data-aos-delay="800">
+                        <div class="faq-item cursor-pointer" onclick="toggleFAQ(this)">
+                            <div class="flex justify-between items-center">
+                                <h3 class="text-lg font-bold text-primary-green">متى يبدأ حساب الحول الهجري؟</h3>
+                                <i class="fas fa-chevron-down transition-transform"></i>
+                            </div>
+                            <div class="faq-answer hidden mt-3 text-gray-600">
+                                <p>يبدأ حساب الحول من تاريخ بلوغ المال النصاب، فإذا بلغ مالك النصاب في شهر محرم، فتحسب الزكاة في محرم التالي.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-16 bg-light-green">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title" data-aos="fade-up">
+                <i class="fas fa-envelope ml-2"></i>
+                تواصل معنا
+            </h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="info-card" data-aos="fade-up">
+                        <h3 class="text-xl font-bold text-primary-green mb-4">
+                            <i class="fas fa-question-circle ml-2"></i>
+                            هل لديك سؤال؟
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            نحن هنا لمساعدتك في جميع استفساراتك حول الزكاة وحساباتها الشرعية.
+                        </p>
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope text-primary-green ml-3"></i>
+                                <span>info@calcuzakat.com</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-phone text-primary-green ml-3"></i>
+                                <span>+966 12 345 6789</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-clock text-primary-green ml-3"></i>
+                                <span>24/7 دعم على مدار الساعة</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card" data-aos="fade-up" data-aos-delay="200">
+                        <h3 class="text-xl font-bold text-primary-green mb-4">
+                            <i class="fas fa-share-alt ml-2"></i>
+                            شارك الخير
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            ساعد الآخرين في حساب زكاتهم بمشاركة موقع CalcuZakat معهم.
+                        </p>
+                        <div class="flex gap-4">
+                            <a href="#" class="btn-secondary">
+                                <i class="fab fa-twitter ml-2"></i>
+                                تويتر
+                            </a>
+                            <a href="#" class="btn-secondary">
+                                <i class="fab fa-facebook ml-2"></i>
+                                فيسبوك
+                            </a>
+                            <a href="#" class="btn-secondary">
+                                <i class="fab fa-whatsapp ml-2"></i>
+                                واتساب
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="text-3xl font-bold font-amiri mb-4">
+                    <i class="fas fa-calculator ml-2"></i>
+                    CalcuZakat
+                </div>
+                <p class="text-lg mb-6">
+                    حاسبة الزكاة الشرعية الذكية والأكثر دقة في العالم العربي
+                </p>
+                <div class="footer-links">
+                    <a href="#home">الرئيسية</a>
+                    <a href="#calculator">حاسبة الزكاة</a>
+                    <a href="#about">عن الزكاة</a>
+                    <a href="#features">المميزات</a>
+                    <a href="#contact">تواصل معنا</a>
+                </div>
+                <div class="border-t border-gray-600 mt-8 pt-8">
+                    <p class="text-sm opacity-75">
+                        &copy; 2025 CalcuZakat. جميع الحقوق محفوظة.
+                    </p>
+                    <p class="text-xs mt-2 opacity-60">
+                        تم تطوير هذا الموقع وفقاً لأحكام الشريعة الإسلامية
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action Button -->
+    <div class="floating-action" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loadingSpinner"></div>
+
+    <script>
+        // Currency conversion rates (simplified - in real app, fetch from API)
+        const currencyRates = {
+            USD: 1,
+            SAR: 3.75,
+            AED: 3.67,
+            EGP: 47.5,
+            KWD: 0.31,
+            QAR: 3.64,
+            OMR: 0.38,
+            BHD: 0.38,
+            JOD: 0.71,
+            LBP: 89500,
+            IQD: 1310,
+            MAD: 10.2,
+            TND: 3.1,
+            DZD: 135,
+            LYD: 4.8
+        };
+
+        let currentCurrency = 'USD';
+        let goldPrice = 97.5; // USD per gram
+        let silverPrice = 1.05; // USD per gram
+        let goldNisabGrams = 87.48; // grams
+        let silverNisabGrams = 612.36; // grams
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeApp();
+        });
+
+        function initializeApp() {
+            // Set up event listeners
+            setupEventListeners();
+            
+            // Initialize AOS (Animate On Scroll)
+            AOS.init({
+                duration: 800,
+                once: true,
+                mirror: false
+            });
+            
+            // Update last update time
+            document.getElementById('last-update').textContent = new Date().toLocaleDateString('ar-EG-u-nu-latn', { year: 'numeric', month: 'long', day: 'numeric' });
+            
+            // Start counter animations once they are visible
+            observeCounters();
+            
+            // Initialize charts
+            createCharts();
+
+            // Load saved data if available
+            loadSavedData();
+        }
+
+        function setupEventListeners() {
+            // Mobile menu toggle
+            const mobileMenuButton = document.querySelector('.mobile-menu-button');
+            const mobileMenu = document.querySelector('.hidden.md\\:block'); // More robust selector
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                     // A simple implementation could be to toggle a class on the menu itself
+                     // This part needs a proper implementation if a mobile menu is desired.
+                     // For now, let's assume it's for future use as the HTML doesn't contain the menu div.
+                });
+            }
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Auto-save on input changes
+            document.getElementById('calculator').addEventListener('input', (e) => {
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') {
+                    autoSave();
+                }
+            });
+        }
+
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.querySelectorAll('.tab-button').forEach(button => button.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+            calculateTotalZakat();
+        }
+
+        function setCurrency(currency) {
+            currentCurrency = currency;
+            document.querySelectorAll('.currency-btn').forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            document.querySelectorAll('.current-currency').forEach(el => el.textContent = currency);
+            
+            // Recalculate all values
+            recalculateAll();
+            autoSave();
+        }
+
+        function recalculateAll() {
+             calculateMoney();
+             calculateGold();
+             calculateSilver();
+             calculateStocks();
+             calculateProperty();
+        }
+
+        function convertFromUSD(amountInUSD) {
+            return amountInUSD * currencyRates[currentCurrency];
+        }
+
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('ar-SA', {
+                style: 'decimal',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).format(amount);
+        }
+
+        function getValue(elementId) {
+            return parseFloat(document.getElementById(elementId).value) || 0;
+        }
+
+        function calculateMoney() {
+            const cash = getValue('cash');
+            const savings = getValue('savings');
+            const receivables = getValue('receivables');
+            const debts = getValue('debts');
+            
+            const totalMoney = cash + savings + receivables - debts;
+            const nisabValue = convertFromUSD(goldPrice * goldNisabGrams);
+            
+            let zakat = (totalMoney >= nisabValue) ? totalMoney * 0.025 : 0;
+            
+            document.getElementById('money-result').textContent = formatCurrency(zakat);
+            calculateTotalZakat();
+        }
+
+        function calculateGold() {
+            const weight = getValue('gold-weight');
+            const purity = getValue('gold-purity');
+            const currentGoldPrice = getValue('gold-price');
+            
+            const pureWeight = weight * (purity / 24);
+            const totalValueInUSD = pureWeight * currentGoldPrice;
+            const totalValue = convertFromUSD(totalValueInUSD);
+
+            let zakat = (pureWeight >= goldNisabGrams) ? totalValue * 0.025 : 0;
+            
+            document.getElementById('gold-result').textContent = formatCurrency(zakat);
+            calculateTotalZakat();
+        }
+
+        function calculateSilver() {
+            const weight = getValue('silver-weight');
+            const purity = getValue('silver-purity');
+            const currentSilverPrice = getValue('silver-price');
+
+            const pureWeight = weight * (purity / 100);
+            const totalValueInUSD = pureWeight * currentSilverPrice;
+            const totalValue = convertFromUSD(totalValueInUSD);
+            
+            let zakat = (pureWeight >= silverNisabGrams) ? totalValue * 0.025 : 0;
+            
+            document.getElementById('silver-result').textContent = formatCurrency(zakat);
+            calculateTotalZakat();
+        }
+
+        function calculateStocks() {
+            const stocksValue = getValue('stocks-value');
+            const dividends = getValue('dividends');
+            
+            const totalValue = stocksValue + dividends;
+            const nisabValue = convertFromUSD(goldPrice * goldNisabGrams);
+            
+            let zakat = (totalValue >= nisabValue) ? totalValue * 0.025 : 0;
+            
+            document.getElementById('stocks-result').textContent = formatCurrency(zakat);
+            calculateTotalZakat();
+        }
+
+        function calculateProperty() {
+            const propertyValue = getValue('property-value');
+            const rentalIncome = getValue('rental-income');
+            
+            const totalValue = propertyValue + rentalIncome;
+            const nisabValue = convertFromUSD(goldPrice * goldNisabGrams);
+            
+            let zakat = (totalValue >= nisabValue) ? totalValue * 0.025 : 0;
+            
+            document.getElementById('property-result').textContent = formatCurrency(zakat);
+            calculateTotalZakat();
+        }
+
+        function calculateTotalZakat() {
+            const moneyZakat = parseFloat(document.getElementById('money-result').textContent.replace(/,/g, '')) || 0;
+            const goldZakat = parseFloat(document.getElementById('gold-result').textContent.replace(/,/g, '')) || 0;
+            const silverZakat = parseFloat(document.getElementById('silver-result').textContent.replace(/,/g, '')) || 0;
+            const stocksZakat = parseFloat(document.getElementById('stocks-result').textContent.replace(/,/g, '')) || 0;
+            const propertyZakat = parseFloat(document.getElementById('property-result').textContent.replace(/,/g, '')) || 0;
+            
+            const totalZakat = moneyZakat + goldZakat + silverZakat + stocksZakat + propertyZakat;
+            
+            document.getElementById('total-zakat').textContent = formatCurrency(totalZakat);
+        }
+
+        function resetCalculator() {
+            document.querySelectorAll('input[type="number"]').forEach(input => input.value = '');
+            recalculateAll();
+            localStorage.removeItem('calcuzakat-data');
+        }
+
+        function printResult() {
+            const printContent = `
+                <html lang="ar" dir="rtl">
+                <head>
+                    <title>تقرير الزكاة - CalcuZakat</title>
+                    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+                    <style>
+                        body { font-family: 'Tajawal', sans-serif; padding: 20px; }
+                        h1 { color: #2d7d32; text-align: center; }
+                        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+                        th, td { border: 1px solid #ddd; padding: 12px; text-align: right; }
+                        th { background-color: #e8f5e8; }
+                        .total { font-weight: bold; font-size: 1.2em; }
+                        .footer { margin-top: 30px; text-align: center; font-size: 0.9em; color: #777; }
+                    </style>
+                </head>
+                <body>
+                    <h1>تقرير حساب الزكاة</h1>
+                    <p>تاريخ الطباعة: ${new Date().toLocaleString('ar-SA')}</p>
+                    <p>العملة: ${currentCurrency}</p>
+                    <table>
+                        <tr><th>البند</th><th>مبلغ الزكاة</th></tr>
+                        <tr><td>زكاة المال</td><td>${document.getElementById('money-result').textContent}</td></tr>
+                        <tr><td>زكاة الذهب</td><td>${document.getElementById('gold-result').textContent}</td></tr>
+                        <tr><td>زكاة الفضة</td><td>${document.getElementById('silver-result').textContent}</td></tr>
+                        <tr><td>زكاة الأسهم</td><td>${document.getElementById('stocks-result').textContent}</td></tr>
+                        <tr><td>زكاة العقارات</td><td>${document.getElementById('property-result').textContent}</td></tr>
+                        <tr class="total"><td>الإجمالي</td><td>${document.getElementById('total-zakat').textContent}</td></tr>
+                    </table>
+                    <div class="footer">
+                        تم إنشاء هذا التقرير بواسطة CalcuZakat
+                    </div>
+                </body>
+                </html>
+            `;
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(printContent);
+            printWindow.document.close();
+            printWindow.focus();
+            setTimeout(() => { printWindow.print(); }, 500);
+        }
+
+        function toggleFAQ(element) {
+            const answer = element.querySelector('.faq-answer');
+            const icon = element.querySelector('.fas.fa-chevron-down, .fas.fa-chevron-up');
+            
+            answer.classList.toggle('hidden');
+            icon.classList.toggle('fa-chevron-down');
+            icon.classList.toggle('fa-chevron-up');
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function observeCounters() {
+            const counters = document.querySelectorAll('.counter');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        startCounterAnimation(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            counters.forEach(counter => observer.observe(counter));
+        }
+
+        function startCounterAnimation(counter) {
+            const target = +counter.getAttribute('data-target');
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    clearInterval(timer);
+                    counter.textContent = target.toLocaleString('ar-SA');
+                } else {
+                    counter.textContent = Math.floor(current).toLocaleString('ar-SA');
+                }
+            }, 16);
+        }
+
+        function createCharts() {
+            const commonOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: {
+                            font: { family: 'Tajawal' }
+                        }
+                    }
+                }
+            };
+
+            const zakatTypesCtx = document.getElementById('zakatTypesChart').getContext('2d');
+            new Chart(zakatTypesCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['مال', 'ذهب', 'أسهم', 'عقارات', 'فضة'],
+                    datasets: [{
+                        data: [45, 25, 15, 10, 5],
+                        backgroundColor: ['#2d7d32', '#ffd700', '#1e3a8a', '#81c784', '#c0c0c0'],
+                        borderColor: '#ffffff',
+                        borderWidth: 2
+                    }]
+                },
+                options: { ...commonOptions }
+            });
+
+            const nisabCtx = document.getElementById('nisabChart').getContext('2d');
+            new Chart(nisabCtx, {
+                type: 'line',
+                data: {
+                    labels: ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو'],
+                    datasets: [{
+                        label: 'نصاب الذهب (USD)',
+                        data: [8200, 8350, 8500, 8450, 8600, 8550, 8700],
+                        borderColor: '#ffd700',
+                        backgroundColor: 'rgba(255, 215, 0, 0.1)',
+                        tension: 0.3,
+                        fill: true
+                    }]
+                },
+                options: {
+                     ...commonOptions,
+                     scales: { y: { ticks: { callback: value => '$' + value } } }
+                }
+            });
+        }
+
+        function autoSave() {
+            const formData = {
+                cash: getValue('cash'),
+                savings: getValue('savings'),
+                receivables: getValue('receivables'),
+                debts: getValue('debts'),
+                goldWeight: getValue('gold-weight'),
+                goldPurity: getValue('gold-purity'),
+                goldPrice: getValue('gold-price'),
+                silverWeight: getValue('silver-weight'),
+                silverPurity: getValue('silver-purity'),
+                silverPrice: getValue('silver-price'),
+                stocksValue: getValue('stocks-value'),
+                dividends: getValue('dividends'),
+                propertyValue: getValue('property-value'),
+                rentalIncome: getValue('rental-income'),
+                currency: currentCurrency
+            };
+            localStorage.setItem('calcuzakat-data', JSON.stringify(formData));
+        }
+
+        function loadSavedData() {
+            const savedData = localStorage.getItem('calcuzakat-data');
+            if (savedData) {
+                const data = JSON.parse(savedData);
+                
+                document.getElementById('cash').value = data.cash || '';
+                document.getElementById('savings').value = data.savings || '';
+                document.getElementById('receivables').value = data.receivables || '';
+                document.getElementById('debts').value = data.debts || '';
+                document.getElementById('gold-weight').value = data.goldWeight || '';
+                document.getElementById('gold-purity').value = data.goldPurity || '24';
+                document.getElementById('gold-price').value = data.goldPrice || '97.5';
+                document.getElementById('silver-weight').value = data.silverWeight || '';
+                document.getElementById('silver-purity').value = data.silverPurity || '99.9';
+                document.getElementById('silver-price').value = data.silverPrice || '1.05';
+                document.getElementById('stocks-value').value = data.stocksValue || '';
+                document.getElementById('dividends').value = data.dividends || '';
+                document.getElementById('property-value').value = data.propertyValue || '';
+                document.getElementById('rental-income').value = data.rentalIncome || '';
+
+                if (data.currency) {
+                    // This is a bit tricky since setCurrency expects a click event
+                    // A better approach for programmatic setting:
+                    const currencyBtn = [...document.querySelectorAll('.currency-btn')].find(btn => btn.textContent.includes(data.currency));
+                    if (currencyBtn) {
+                        currentCurrency = data.currency;
+                        document.querySelectorAll('.currency-btn').forEach(btn => btn.classList.remove('active'));
+                        currencyBtn.classList.add('active');
+                        document.querySelectorAll('.current-currency').forEach(el => el.textContent = data.currency);
+                    }
+                }
+                recalculateAll();
+            }
+        }
+    </script>
+</body>
+</html>
