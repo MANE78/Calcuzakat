@@ -39,6 +39,22 @@ export const NAV = [
   { href: "/glossary", label: "القاموس" },
 ] as const;
 
+/**
+ * Developer credit — single source of truth.
+ * To white-label / remove the credit, set `show: false` (or delete this block
+ * and its `<DeveloperCredit />` usage). All placements read from here.
+ */
+export const DEVELOPER = {
+  show: true,
+  name: "محمد خيري", // Arabic-language site
+  nameEn: "Mohamed Khairy",
+  role: "MERN Stack & AI Engineer",
+  email: "mohamedkhairy0887@gmail.com",
+  github: "https://github.com/mohamed-khairy-5i",
+  linkedin: "https://www.linkedin.com/in/mohamed-khairy-5i/",
+  portfolio: "https://mokhairy.netlify.app/",
+} as const;
+
 export const SOCIAL_SHARE = {
   whatsapp:
     "https://wa.me/?text=احسب%20زكاتك%20بدقة%20مع%20CalcuZakat%20https://calcuzakat.netlify.app",

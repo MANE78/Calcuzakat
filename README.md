@@ -85,3 +85,16 @@ export const ANALYTICS = {
 ## الترخيص
 
 مشروع مجاني بهدف خدمة المجتمع ونشر الوعي بالزكاة.
+
+---
+
+## المطوّر
+
+**محمد خيري (Mohamed Khairy)** — MERN Stack & AI Engineer
+
+- 🌐 Portfolio: <https://mokhairy.netlify.app/>
+- 💻 GitHub: <https://github.com/mohamed-khairy-5i>
+- 💼 LinkedIn: <https://www.linkedin.com/in/mohamed-khairy-5i/>
+- ✉️ Email: <mohamedkhairy0887@gmail.com>
+
+هل تريد موقعًا أو تطبيقًا مشابهًا؟ تواصل معي عبر أيٍّ من الروابط أعلاه.

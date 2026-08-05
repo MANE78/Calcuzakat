@@ -3,8 +3,18 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import Hero from "@components/Hero.astro";
 import Calculator from "@components/Calculator.astro";
 import HomeSections from "@components/HomeSections.astro";
-import { SITE } from "@lib/site";
+import { SITE, DEVELOPER } from "@lib/site";
 import { FAQS } from "@data/content";
+
+// Developer attribution as a schema.org Person (author/creator)
+const developerPerson = {
+  "@type": "Person",
+  name: DEVELOPER.nameEn,
+  jobTitle: DEVELOPER.role,
+  url: DEVELOPER.portfolio,
+  email: DEVELOPER.email,
+  sameAs: [DEVELOPER.github, DEVELOPER.linkedin, DEVELOPER.portfolio],
+};
 
 // أقسام الموقع الرئيسية — تُستخدم لسكيمة SiteNavigationElement
 // حتى تظهر روابط الأقسام أسفل نتيجة الموقع في جوجل (Sitelinks)
@@ -51,6 +61,8 @@ const jsonLd = [
     inLanguage: "ar",
     isAccessibleForFree: true,
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    author: developerPerson,
+    creator: developerPerson,
   },
   // SiteNavigationElement — يجعل جوجل يعرض روابط الأقسام (Sitelinks) أسفل الموقع
   ...SITE_SECTIONS.map((s, i) => ({
@@ -67,6 +79,7 @@ const jsonLd = [
     url: SITE.domain + "/",
     logo: SITE.domain + SITE.logoPng,
     email: SITE.email,
+    founder: developerPerson,
   },
   {
     "@context": "https://schema.org",

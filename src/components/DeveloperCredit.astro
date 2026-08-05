@@ -1,0 +1,50 @@
+---
+/**
+ * Small, tasteful "developed by" signature.
+ * Single reusable component — reads from DEVELOPER in @lib/site.
+ * Hidden entirely when DEVELOPER.show is false (one-line white-label).
+ */
+import { DEVELOPER } from "@lib/site";
+import Icon from "./Icon.astro";
+
+interface Props {
+  class?: string;
+}
+const { class: cls = "" } = Astro.props;
+
+const links = [
+  { href: DEVELOPER.portfolio, icon: "globe", label: "الموقع الشخصي (Portfolio)" },
+  { href: DEVELOPER.github, icon: "github", label: "GitHub" },
+  { href: DEVELOPER.linkedin, icon: "linkedin", label: "LinkedIn" },
+  { href: `mailto:${DEVELOPER.email}`, icon: "mail", label: "البريد الإلكتروني" },
+] as const;
+---
+{DEVELOPER.show && (
+  <div class={`flex flex-col items-center gap-2 text-sm text-slate-400 sm:flex-row ${cls}`}>
+    <span class="flex items-center gap-1.5">
+      طُوِّر بواسطة
+      <a
+        href={DEVELOPER.portfolio}
+        target="_blank"
+        rel="noopener author"
+        class="font-bold text-slate-200 underline decoration-gold-400/50 underline-offset-2 transition hover:text-gold-300"
+        title={`${DEVELOPER.name} — ${DEVELOPER.role}`}
+      >{DEVELOPER.name}</a>
+      <span class="hidden text-slate-500 sm:inline">· {DEVELOPER.role}</span>
+    </span>
+    <span class="flex items-center gap-2">
+      {links.map((l) => (
+        <a
+          href={l.href}
+          target={l.href.startsWith("mailto:") ? undefined : "_blank"}
+          rel="noopener"
+          aria-label={l.label}
+          title={l.label}
+          class="grid h-8 w-8 place-items-center rounded-lg bg-white/5 text-slate-300 transition hover:bg-brand-500 hover:text-white"
+        >
+          <Icon name={l.icon} class="h-4 w-4" />
+        </a>
+      ))}
+    </span>
+  </div>
+)}
