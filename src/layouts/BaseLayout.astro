@@ -29,15 +29,27 @@ const props = Astro.props;
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Load Google Fonts non-render-blocking (improves FCP/LCP on mobile).
+         Falls back to metric-matched "Tajawal Fallback" until swap. -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Amiri:wght@400;700&display=swap"
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Amiri:wght@400;700&display=swap"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Amiri:wght@400;700&display=swap"
+      />
+    </noscript>
     <Seo {...props} />
 
-    <!-- Set theme before paint to avoid flash -->
+    <!-- Set theme + JS flag before paint to avoid flash / layout shift -->
     <script is:inline>
       (function () {
+        // Enable JS-only reveal animations (avoids CLS if JS is slow/absent).
+        document.documentElement.classList.add("js");
         try {
           const t = localStorage.getItem("cz-theme");
           const dark = t ? t === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;

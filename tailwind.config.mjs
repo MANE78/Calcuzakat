@@ -12,7 +12,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['"Tajawal"', "system-ui", "sans-serif"],
+        sans: ['"Tajawal"', '"Tajawal Fallback"', "system-ui", "sans-serif"],
         serif: ['"Amiri"', "serif"],
       },
       colors: {
